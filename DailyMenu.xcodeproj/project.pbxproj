@@ -1,0 +1,1100 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 70;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A1000001001D001D /* DailyMenuApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000001001F001F /* DailyMenuApp.swift */; };
+		A1000002001D001D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000002001F001F /* AppDelegate.swift */; };
+		A1000005001D001D /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000005001F001F /* Log.swift */; };
+		A1000006001D001D /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000006001F001F /* Activity.swift */; };
+		A1000007001D001D /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000007001F001F /* APIClient.swift */; };
+		A1000008001D001D /* LocalGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000008001F001F /* LocalGenerator.swift */; };
+		A1000009001D001D /* ReminderScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000009001F001F /* ReminderScheduler.swift */; };
+		A100000A001D001D /* CoreStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100000A001F001F /* CoreStore.swift */; };
+		A100000B001D001D /* CoreSeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100000B001F001F /* CoreSeedLoader.swift */; };
+		A100000C001D001D /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100000C001F001F /* Theme.swift */; };
+		A100000D001D001D /* Copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100000D001F001F /* Copy.swift */; };
+		A100000E001D001D /* FeatureFlags.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100000E001F001F /* FeatureFlags.swift */; };
+		A100000F001D001D /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100000F001F001F /* Reachability.swift */; };
+		A1000010001D001D /* OfflineManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000010001F001F /* OfflineManager.swift */; };
+		A1000011001D001D /* OfflineStatusBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000011001F001F /* OfflineStatusBanner.swift */; };
+		A1000012001D001D /* DeferredActionToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000012001F001F /* DeferredActionToast.swift */; };
+		A1000013001D001D /* SyncConflictResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000013001F001F /* SyncConflictResolver.swift */; };
+		A1000014001D001D /* PerformanceMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000014001F001F /* PerformanceMonitor.swift */; };
+		A1000015001D001D /* AccessibilityHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000015001F001F /* AccessibilityHelpers.swift */; };
+		A1000016001D001D /* CopyToneChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000016001F001F /* CopyToneChecker.swift */; };
+		A1000017001D001D /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000017001F001F /* HomeView.swift */; };
+		A1000018001D001D /* FiltersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000018001F001F /* FiltersView.swift */; };
+		A1000019001D001D /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000019001F001F /* FavoritesView.swift */; };
+		A100001A001D001D /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100001A001F001F /* HistoryView.swift */; };
+		A100001B001D001D /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100001B001F001F /* SettingsView.swift */; };
+		A100001C001D001D /* DataResetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100001C001F001F /* DataResetManager.swift */; };
+		A100001D001D001D /* SuggestionEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100001D001F001F /* SuggestionEngine.swift */; };
+		A100001F001D001D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A100001F001F001F /* Assets.xcassets */; };
+		A1000020001D001D /* activities.json in Resources */ = {isa = PBXBuildFile; fileRef = A1000020001F001F /* activities.json */; };
+		A1000021001D001D /* DailyMenu.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A1000021001F001F /* DailyMenu.xcdatamodeld */; };
+		A1000030001D001D /* StoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000030001F001F /* StoreTests.swift */; };
+		A1000031001D001D /* SeedLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000031001F001F /* SeedLoaderTests.swift */; };
+		A1000032001D001D /* SyncConflictResolverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000032001F001F /* SyncConflictResolverTests.swift */; };
+		A1000033001D001D /* AccessibilityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000033001F001F /* AccessibilityTests.swift */; };
+		A1000034001D001D /* PerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000034001F001F /* PerformanceTests.swift */; };
+		A2A381652EDD16BA0002BDB3 /* DailyMenuShare.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = A2A3815B2EDD16BA0002BDB3 /* DailyMenuShare.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B1000001001D001D /* MenuDecorations.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000001001F001F /* MenuDecorations.swift */; };
+		B1000002001D001D /* FilterComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000002001F001F /* FilterComponents.swift */; };
+		B1000003001D001D /* MenuCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000003001F001F /* MenuCardView.swift */; };
+		C1000001001D001D /* DailyMenuUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1000001001F001F /* DailyMenuUITests.swift */; };
+		D1000001001D001D /* AIAppLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1000001001F001F /* AIAppLauncher.swift */; };
+		D1000002001D001D /* AIActivityParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1000002001F001F /* AIActivityParser.swift */; };
+		D1000003001D001D /* AIActivityImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1000003001F001F /* AIActivityImporter.swift */; };
+		E1000022001D001D /* activities_5min.json in Resources */ = {isa = PBXBuildFile; fileRef = E1000022001F001F /* activities_5min.json */; };
+		E1000023001D001D /* activities_15min.json in Resources */ = {isa = PBXBuildFile; fileRef = E1000023001F001F /* activities_15min.json */; };
+		E1000024001D001D /* activities_30plus.json in Resources */ = {isa = PBXBuildFile; fileRef = E1000024001F001F /* activities_30plus.json */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A1000040001D001D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A1000000001D001D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A1000050001D001D;
+			remoteInfo = DailyMenu;
+		};
+		A2A381632EDD16BA0002BDB3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A1000000001D001D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A2A3815A2EDD16BA0002BDB3;
+			remoteInfo = DailyMenuShare;
+		};
+		C1000002001D001D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A1000000001D001D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A1000050001D001D;
+			remoteInfo = DailyMenu;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A2A381662EDD16BA0002BDB3 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				A2A381652EDD16BA0002BDB3 /* DailyMenuShare.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		A1000001001F001F /* DailyMenuApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyMenuApp.swift; sourceTree = "<group>"; };
+		A1000002001F001F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A1000005001F001F /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
+		A1000006001F001F /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
+		A1000007001F001F /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		A1000008001F001F /* LocalGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalGenerator.swift; sourceTree = "<group>"; };
+		A1000009001F001F /* ReminderScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderScheduler.swift; sourceTree = "<group>"; };
+		A100000A001F001F /* CoreStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CoreStore.swift; path = Store.swift; sourceTree = "<group>"; };
+		A100000B001F001F /* CoreSeedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CoreSeedLoader.swift; path = SeedLoader.swift; sourceTree = "<group>"; };
+		A100000C001F001F /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		A100000D001F001F /* Copy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Copy.swift; sourceTree = "<group>"; };
+		A100000E001F001F /* FeatureFlags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureFlags.swift; sourceTree = "<group>"; };
+		A100000F001F001F /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		A1000010001F001F /* OfflineManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineManager.swift; sourceTree = "<group>"; };
+		A1000011001F001F /* OfflineStatusBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineStatusBanner.swift; sourceTree = "<group>"; };
+		A1000012001F001F /* DeferredActionToast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeferredActionToast.swift; sourceTree = "<group>"; };
+		A1000013001F001F /* SyncConflictResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncConflictResolver.swift; sourceTree = "<group>"; };
+		A1000014001F001F /* PerformanceMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceMonitor.swift; sourceTree = "<group>"; };
+		A1000015001F001F /* AccessibilityHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibilityHelpers.swift; sourceTree = "<group>"; };
+		A1000016001F001F /* CopyToneChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyToneChecker.swift; sourceTree = "<group>"; };
+		A1000017001F001F /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		A1000018001F001F /* FiltersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersView.swift; sourceTree = "<group>"; };
+		A1000019001F001F /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
+		A100001A001F001F /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		A100001B001F001F /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		A100001C001F001F /* DataResetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataResetManager.swift; sourceTree = "<group>"; };
+		A100001D001F001F /* SuggestionEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionEngine.swift; sourceTree = "<group>"; };
+		A100001F001F001F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A1000020001F001F /* activities.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = activities.json; sourceTree = "<group>"; };
+		A1000022001F001E /* DailyMenu.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DailyMenu.xcdatamodel; sourceTree = "<group>"; };
+		A1000022001F001F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A1000030001F001F /* StoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreTests.swift; sourceTree = "<group>"; };
+		A1000031001F001F /* SeedLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedLoaderTests.swift; sourceTree = "<group>"; };
+		A1000032001F001F /* SyncConflictResolverTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncConflictResolverTests.swift; sourceTree = "<group>"; };
+		A1000033001F001F /* AccessibilityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibilityTests.swift; sourceTree = "<group>"; };
+		A1000034001F001F /* PerformanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceTests.swift; sourceTree = "<group>"; };
+		A1000051001D001D /* DailyMenu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DailyMenu.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1000061001D001D /* DailyMenuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DailyMenuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A2A3815B2EDD16BA0002BDB3 /* DailyMenuShare.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = DailyMenuShare.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		B1000001001F001F /* MenuDecorations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuDecorations.swift; sourceTree = "<group>"; };
+		B1000002001F001F /* FilterComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterComponents.swift; sourceTree = "<group>"; };
+		B1000003001F001F /* MenuCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCardView.swift; sourceTree = "<group>"; };
+		C1000001001F001F /* DailyMenuUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyMenuUITests.swift; sourceTree = "<group>"; };
+		C1000004001D001D /* DailyMenuUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DailyMenuUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D1000001001F001F /* AIAppLauncher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIAppLauncher.swift; sourceTree = "<group>"; };
+		D1000002001F001F /* AIActivityParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIActivityParser.swift; sourceTree = "<group>"; };
+		D1000003001F001F /* AIActivityImporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIActivityImporter.swift; sourceTree = "<group>"; };
+		E1000022001F001F /* activities_5min.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = activities_5min.json; sourceTree = "<group>"; };
+		E1000023001F001F /* activities_15min.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = activities_15min.json; sourceTree = "<group>"; };
+		E1000024001F001F /* activities_30plus.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = activities_30plus.json; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		A2A381692EDD16BA0002BDB3 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = A2A3815A2EDD16BA0002BDB3 /* DailyMenuShare */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		A2A3815C2EDD16BA0002BDB3 /* DailyMenuShare */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (A2A381692EDD16BA0002BDB3 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = DailyMenuShare; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A100004E001D001D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A100005E001D001D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A2A381582EDD16BA0002BDB3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C1000022001D001D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A1000047001D001D = {
+			isa = PBXGroup;
+			children = (
+				A1000052001D001D /* App */,
+				A1000053001D001D /* Core */,
+				A1000054001D001D /* Features */,
+				A1000055001D001D /* Resources */,
+				A1000056001D001D /* Tests */,
+				C1000005001D001D /* DailyMenuUITests */,
+				A2A3815C2EDD16BA0002BDB3 /* DailyMenuShare */,
+				A1000048001D001D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A1000048001D001D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A1000051001D001D /* DailyMenu.app */,
+				A1000061001D001D /* DailyMenuTests.xctest */,
+				C1000004001D001D /* DailyMenuUITests.xctest */,
+				A2A3815B2EDD16BA0002BDB3 /* DailyMenuShare.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A1000052001D001D /* App */ = {
+			isa = PBXGroup;
+			children = (
+				A1000001001F001F /* DailyMenuApp.swift */,
+				A1000002001F001F /* AppDelegate.swift */,
+				A1000022001F001F /* Info.plist */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		A1000053001D001D /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				A1000060001D001D /* Logging */,
+				A1000061001D001F /* Data */,
+				A1000062001D001D /* Network */,
+				A1000063001D001D /* AI */,
+				A1000064001D001D /* Notifications */,
+				A1000065001D001D /* Theme */,
+				A1000066001D001D /* FeatureFlags */,
+				A1000067001D001D /* Components */,
+				A1000068001D001D /* Sync */,
+				A1000069001D001D /* Performance */,
+				A100006A001D001D /* Accessibility */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		A1000054001D001D /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				A1000070001D001D /* Home */,
+				A1000071001D001D /* Favorites */,
+				A1000072001D001D /* History */,
+				A1000073001D001D /* Settings */,
+				A1000074001D001D /* Suggestions */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		A1000055001D001D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A100001F001F001F /* Assets.xcassets */,
+				A1000075001D001D /* Seed */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		A1000056001D001D /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				A1000076001D001D /* Unit */,
+				A1000077001D001D /* Performance */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		A1000060001D001D /* Logging */ = {
+			isa = PBXGroup;
+			children = (
+				A1000005001F001F /* Log.swift */,
+			);
+			path = Logging;
+			sourceTree = "<group>";
+		};
+		A1000061001D001F /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				A100006B001D001D /* Models */,
+				A100006C001D001D /* Persistence */,
+				A1000021001F001F /* DailyMenu.xcdatamodeld */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		A1000062001D001D /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				A1000007001F001F /* APIClient.swift */,
+				A100000F001F001F /* Reachability.swift */,
+				A1000010001F001F /* OfflineManager.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		A1000063001D001D /* AI */ = {
+			isa = PBXGroup;
+			children = (
+				D1000001001F001F /* AIAppLauncher.swift */,
+				D1000002001F001F /* AIActivityParser.swift */,
+				D1000003001F001F /* AIActivityImporter.swift */,
+				A1000008001F001F /* LocalGenerator.swift */,
+			);
+			path = AI;
+			sourceTree = "<group>";
+		};
+		A1000064001D001D /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				A1000009001F001F /* ReminderScheduler.swift */,
+			);
+			path = Notifications;
+			sourceTree = "<group>";
+		};
+		A1000065001D001D /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				A100000C001F001F /* Theme.swift */,
+				A100000D001F001F /* Copy.swift */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
+		A1000066001D001D /* FeatureFlags */ = {
+			isa = PBXGroup;
+			children = (
+				A100000E001F001F /* FeatureFlags.swift */,
+			);
+			path = FeatureFlags;
+			sourceTree = "<group>";
+		};
+		A1000067001D001D /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				A1000011001F001F /* OfflineStatusBanner.swift */,
+				A1000012001F001F /* DeferredActionToast.swift */,
+				B1000001001F001F /* MenuDecorations.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		A1000068001D001D /* Sync */ = {
+			isa = PBXGroup;
+			children = (
+				A1000013001F001F /* SyncConflictResolver.swift */,
+			);
+			path = Sync;
+			sourceTree = "<group>";
+		};
+		A1000069001D001D /* Performance */ = {
+			isa = PBXGroup;
+			children = (
+				A1000014001F001F /* PerformanceMonitor.swift */,
+			);
+			path = Performance;
+			sourceTree = "<group>";
+		};
+		A100006A001D001D /* Accessibility */ = {
+			isa = PBXGroup;
+			children = (
+				A1000015001F001F /* AccessibilityHelpers.swift */,
+				A1000016001F001F /* CopyToneChecker.swift */,
+			);
+			path = Accessibility;
+			sourceTree = "<group>";
+		};
+		A100006B001D001D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A1000006001F001F /* Activity.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A100006C001D001D /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				A100000A001F001F /* CoreStore.swift */,
+				A100000B001F001F /* CoreSeedLoader.swift */,
+			);
+			path = Persistence;
+			sourceTree = "<group>";
+		};
+		A1000070001D001D /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				A1000017001F001F /* HomeView.swift */,
+				A1000018001F001F /* FiltersView.swift */,
+				B1000002001F001F /* FilterComponents.swift */,
+				B1000003001F001F /* MenuCardView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		A1000071001D001D /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				A1000019001F001F /* FavoritesView.swift */,
+			);
+			path = Favorites;
+			sourceTree = "<group>";
+		};
+		A1000072001D001D /* History */ = {
+			isa = PBXGroup;
+			children = (
+				A100001A001F001F /* HistoryView.swift */,
+			);
+			path = History;
+			sourceTree = "<group>";
+		};
+		A1000073001D001D /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				A100001B001F001F /* SettingsView.swift */,
+				A100001C001F001F /* DataResetManager.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		A1000074001D001D /* Suggestions */ = {
+			isa = PBXGroup;
+			children = (
+				A100001D001F001F /* SuggestionEngine.swift */,
+			);
+			path = Suggestions;
+			sourceTree = "<group>";
+		};
+		A1000075001D001D /* Seed */ = {
+			isa = PBXGroup;
+			children = (
+				A1000020001F001F /* activities.json */,
+				E1000022001F001F /* activities_5min.json */,
+				E1000023001F001F /* activities_15min.json */,
+				E1000024001F001F /* activities_30plus.json */,
+			);
+			path = Seed;
+			sourceTree = "<group>";
+		};
+		A1000076001D001D /* Unit */ = {
+			isa = PBXGroup;
+			children = (
+				A1000030001F001F /* StoreTests.swift */,
+				A1000031001F001F /* SeedLoaderTests.swift */,
+				A1000032001F001F /* SyncConflictResolverTests.swift */,
+				A1000033001F001F /* AccessibilityTests.swift */,
+			);
+			path = Unit;
+			sourceTree = "<group>";
+		};
+		A1000077001D001D /* Performance */ = {
+			isa = PBXGroup;
+			children = (
+				A1000034001F001F /* PerformanceTests.swift */,
+			);
+			path = Performance;
+			sourceTree = "<group>";
+		};
+		C1000005001D001D /* DailyMenuUITests */ = {
+			isa = PBXGroup;
+			children = (
+				C1000001001F001F /* DailyMenuUITests.swift */,
+			);
+			path = DailyMenuUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A1000050001D001D /* DailyMenu */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A1000080001D001D /* Build configuration list for PBXNativeTarget "DailyMenu" */;
+			buildPhases = (
+				A100004D001D001D /* Sources */,
+				A100004E001D001D /* Frameworks */,
+				A100004F001D001D /* Resources */,
+				A2A381662EDD16BA0002BDB3 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A2A381642EDD16BA0002BDB3 /* PBXTargetDependency */,
+			);
+			name = DailyMenu;
+			productName = DailyMenu;
+			productReference = A1000051001D001D /* DailyMenu.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A1000060001D001E /* DailyMenuTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A1000081001D001D /* Build configuration list for PBXNativeTarget "DailyMenuTests" */;
+			buildPhases = (
+				A100005D001D001D /* Sources */,
+				A100005E001D001D /* Frameworks */,
+				A100005F001D001D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A1000041001D001D /* PBXTargetDependency */,
+			);
+			name = DailyMenuTests;
+			productName = DailyMenuTests;
+			productReference = A1000061001D001D /* DailyMenuTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		A2A3815A2EDD16BA0002BDB3 /* DailyMenuShare */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A2A3816A2EDD16BA0002BDB3 /* Build configuration list for PBXNativeTarget "DailyMenuShare" */;
+			buildPhases = (
+				A2A381572EDD16BA0002BDB3 /* Sources */,
+				A2A381582EDD16BA0002BDB3 /* Frameworks */,
+				A2A381592EDD16BA0002BDB3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				A2A3815C2EDD16BA0002BDB3 /* DailyMenuShare */,
+			);
+			name = DailyMenuShare;
+			packageProductDependencies = (
+			);
+			productName = DailyMenuShare;
+			productReference = A2A3815B2EDD16BA0002BDB3 /* DailyMenuShare.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		C1000010001D001D /* DailyMenuUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C1000032001D001D /* Build configuration list for PBXNativeTarget "DailyMenuUITests" */;
+			buildPhases = (
+				C1000021001D001D /* Sources */,
+				C1000022001D001D /* Frameworks */,
+				C1000020001D001D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C1000023001D001D /* PBXTargetDependency */,
+			);
+			name = DailyMenuUITests;
+			productName = DailyMenuUITests;
+			productReference = C1000004001D001D /* DailyMenuUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A1000000001D001D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2610;
+				LastUpgradeCheck = 2610;
+				TargetAttributes = {
+					A1000050001D001D = {
+						CreatedOnToolsVersion = 15.0;
+					};
+					A1000060001D001E = {
+						CreatedOnToolsVersion = 15.0;
+						TestTargetID = A1000050001D001D;
+					};
+					A2A3815A2EDD16BA0002BDB3 = {
+						CreatedOnToolsVersion = 26.1;
+					};
+					C1000010001D001D = {
+						CreatedOnToolsVersion = 15.0;
+						TestTargetID = A1000050001D001D;
+					};
+				};
+			};
+			buildConfigurationList = A1000049001D001D /* Build configuration list for PBXProject "DailyMenu" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A1000047001D001D;
+			productRefGroup = A1000048001D001D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A1000050001D001D /* DailyMenu */,
+				A1000060001D001E /* DailyMenuTests */,
+				C1000010001D001D /* DailyMenuUITests */,
+				A2A3815A2EDD16BA0002BDB3 /* DailyMenuShare */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A100004F001D001D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A100001F001D001D /* Assets.xcassets in Resources */,
+				A1000020001D001D /* activities.json in Resources */,
+				E1000022001D001D /* activities_5min.json in Resources */,
+				E1000023001D001D /* activities_15min.json in Resources */,
+				E1000024001D001D /* activities_30plus.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A100005F001D001D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A2A381592EDD16BA0002BDB3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C1000020001D001D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A100004D001D001D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A1000001001D001D /* DailyMenuApp.swift in Sources */,
+				A1000002001D001D /* AppDelegate.swift in Sources */,
+				A1000005001D001D /* Log.swift in Sources */,
+				A1000006001D001D /* Activity.swift in Sources */,
+				A1000007001D001D /* APIClient.swift in Sources */,
+				A1000008001D001D /* LocalGenerator.swift in Sources */,
+				A1000009001D001D /* ReminderScheduler.swift in Sources */,
+				A100000A001D001D /* CoreStore.swift in Sources */,
+				A100000B001D001D /* CoreSeedLoader.swift in Sources */,
+				A100000C001D001D /* Theme.swift in Sources */,
+				A100000D001D001D /* Copy.swift in Sources */,
+				A100000E001D001D /* FeatureFlags.swift in Sources */,
+				A100000F001D001D /* Reachability.swift in Sources */,
+				A1000010001D001D /* OfflineManager.swift in Sources */,
+				A1000011001D001D /* OfflineStatusBanner.swift in Sources */,
+				A1000012001D001D /* DeferredActionToast.swift in Sources */,
+				A1000013001D001D /* SyncConflictResolver.swift in Sources */,
+				A1000014001D001D /* PerformanceMonitor.swift in Sources */,
+				A1000015001D001D /* AccessibilityHelpers.swift in Sources */,
+				A1000016001D001D /* CopyToneChecker.swift in Sources */,
+				A1000017001D001D /* HomeView.swift in Sources */,
+				A1000018001D001D /* FiltersView.swift in Sources */,
+				A1000019001D001D /* FavoritesView.swift in Sources */,
+				A100001A001D001D /* HistoryView.swift in Sources */,
+				A100001B001D001D /* SettingsView.swift in Sources */,
+				A100001C001D001D /* DataResetManager.swift in Sources */,
+				A100001D001D001D /* SuggestionEngine.swift in Sources */,
+				A1000021001D001D /* DailyMenu.xcdatamodeld in Sources */,
+				B1000001001D001D /* MenuDecorations.swift in Sources */,
+				B1000002001D001D /* FilterComponents.swift in Sources */,
+				B1000003001D001D /* MenuCardView.swift in Sources */,
+				D1000001001D001D /* AIAppLauncher.swift in Sources */,
+				D1000002001D001D /* AIActivityParser.swift in Sources */,
+				D1000003001D001D /* AIActivityImporter.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A100005D001D001D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A1000030001D001D /* StoreTests.swift in Sources */,
+				A1000031001D001D /* SeedLoaderTests.swift in Sources */,
+				A1000032001D001D /* SyncConflictResolverTests.swift in Sources */,
+				A1000033001D001D /* AccessibilityTests.swift in Sources */,
+				A1000034001D001D /* PerformanceTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A2A381572EDD16BA0002BDB3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C1000021001D001D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C1000001001D001D /* DailyMenuUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A1000041001D001D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A1000050001D001D /* DailyMenu */;
+			targetProxy = A1000040001D001D /* PBXContainerItemProxy */;
+		};
+		A2A381642EDD16BA0002BDB3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A2A3815A2EDD16BA0002BDB3 /* DailyMenuShare */;
+			targetProxy = A2A381632EDD16BA0002BDB3 /* PBXContainerItemProxy */;
+		};
+		C1000023001D001D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A1000050001D001D /* DailyMenu */;
+			targetProxy = C1000002001D001D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		A100008A001D001D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 4WMBQ69KBS;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A100008B001D001D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 4WMBQ69KBS;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A100008C001D001D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "DailyMenu/DailyMenu.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = App/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.DailyMenu;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A100008D001D001D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "DailyMenu/DailyMenu.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = App/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.DailyMenu;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		A100008E001D001D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.DailyMenuTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DailyMenu.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/DailyMenu";
+			};
+			name = Debug;
+		};
+		A100008F001D001D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.DailyMenuTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DailyMenu.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/DailyMenu";
+			};
+			name = Release;
+		};
+		A2A381672EDD16BA0002BDB3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = DailyMenuShare/DailyMenuShare.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DailyMenuShare/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Add to Daily Menu";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.DailyMenu.DailyMenuShare;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A2A381682EDD16BA0002BDB3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = DailyMenuShare/DailyMenuShare.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DailyMenuShare/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Add to Daily Menu";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.DailyMenu.DailyMenuShare;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		C1000030001D001D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.DailyMenuUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = DailyMenu;
+			};
+			name = Debug;
+		};
+		C1000031001D001D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.DailyMenuUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = DailyMenu;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A1000049001D001D /* Build configuration list for PBXProject "DailyMenu" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A100008A001D001D /* Debug */,
+				A100008B001D001D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A1000080001D001D /* Build configuration list for PBXNativeTarget "DailyMenu" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A100008C001D001D /* Debug */,
+				A100008D001D001D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A1000081001D001D /* Build configuration list for PBXNativeTarget "DailyMenuTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A100008E001D001D /* Debug */,
+				A100008F001D001D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A2A3816A2EDD16BA0002BDB3 /* Build configuration list for PBXNativeTarget "DailyMenuShare" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A2A381672EDD16BA0002BDB3 /* Debug */,
+				A2A381682EDD16BA0002BDB3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C1000032001D001D /* Build configuration list for PBXNativeTarget "DailyMenuUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C1000030001D001D /* Debug */,
+				C1000031001D001D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A1000021001F001F /* DailyMenu.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A1000022001F001E /* DailyMenu.xcdatamodel */,
+			);
+			currentVersion = A1000022001F001E /* DailyMenu.xcdatamodel */;
+			path = DailyMenu.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = A1000000001D001D /* Project object */;
+}

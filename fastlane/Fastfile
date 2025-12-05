@@ -1,0 +1,164 @@
+default_platform(:ios)
+
+platform :ios do
+
+  # ============================================
+  # TESTING
+  # ============================================
+
+  desc "Run unit tests"
+  lane :test do |options|
+    device = options[:device] || "iPhone 16"
+    run_tests(
+      project: "DailyMenu.xcodeproj",
+      scheme: "DailyMenu",
+      device: device,
+      clean: true
+    )
+  end
+
+  desc "Run UI tests"
+  lane :uitest do |options|
+    device = options[:device] || "iPhone 16"
+    run_tests(
+      project: "DailyMenu.xcodeproj",
+      scheme: "DailyMenuUITests",
+      device: device,
+      clean: true
+    )
+  end
+
+  desc "Run tests on connected physical device"
+  lane :test_device do
+    # Uses the first connected iOS device
+    run_tests(
+      project: "DailyMenu.xcodeproj",
+      scheme: "DailyMenu",
+      destination: "platform=iOS,name=#{sh('xcrun xctrace list devices 2>&1 | grep -E \"iPhone|iPad\" | grep -v Simulator | head -1 | sed \"s/ (.*//\"').strip}",
+      clean: true
+    )
+  end
+
+  desc "Run all tests (unit + UI)"
+  lane :test_all do
+    test
+    uitest
+  end
+
+  # ============================================
+  # BUILDING
+  # ============================================
+
+  desc "Build the app (debug, no signing)"
+  lane :build do
+    gym(
+      project: "DailyMenu.xcodeproj",
+      scheme: "DailyMenu",
+      skip_codesigning: true,
+      skip_archive: true,
+      destination: "generic/platform=iOS Simulator"
+    )
+  end
+
+  # ============================================
+  # RELEASE - TestFlight
+  # ============================================
+
+  desc "Build and upload to TestFlight"
+  lane :beta do
+    # Ensure tests pass first
+    test_all
+
+    # Increment build number
+    increment_build_number(
+      build_number: Time.now.strftime("%Y%m%d%H%M")
+    )
+
+    # Build for App Store
+    gym(
+      project: "DailyMenu.xcodeproj",
+      scheme: "DailyMenu",
+      export_method: "app-store",
+      output_directory: "./build",
+      output_name: "DailyMenu.ipa"
+    )
+
+    # Upload to TestFlight
+    pilot(
+      skip_waiting_for_build_processing: true
+    )
+  end
+
+  # ============================================
+  # RELEASE - App Store
+  # ============================================
+
+  desc "Build and submit to App Store"
+  lane :release do
+    # Ensure tests pass first
+    test_all
+
+    # Increment version (patch)
+    increment_version_number(
+      bump_type: "patch"
+    )
+
+    increment_build_number(
+      build_number: Time.now.strftime("%Y%m%d%H%M")
+    )
+
+    # Build
+    gym(
+      project: "DailyMenu.xcodeproj",
+      scheme: "DailyMenu",
+      export_method: "app-store",
+      output_directory: "./build",
+      output_name: "DailyMenu.ipa"
+    )
+
+    # Upload to App Store and submit for review
+    deliver(
+      submit_for_review: false,  # Set to true when ready
+      automatic_release: false,
+      force: true
+    )
+  end
+
+  # ============================================
+  # CI - Full Pipeline
+  # ============================================
+
+  desc "Full CI pipeline: build + all tests"
+  lane :ci do
+    build
+    test_all
+    UI.success "CI Pipeline passed!"
+  end
+
+  # ============================================
+  # UTILITIES
+  # ============================================
+
+  desc "Take screenshots for App Store"
+  lane :screenshots do
+    capture_screenshots(
+      project: "DailyMenu.xcodeproj",
+      scheme: "DailyMenuUITests"
+    )
+  end
+
+  desc "Sync code signing certificates"
+  lane :sync_signing do
+    match(type: "appstore")
+    match(type: "development")
+  end
+
+  # ============================================
+  # HOOKS
+  # ============================================
+
+  error do |lane, exception|
+    UI.error "Lane #{lane} failed: #{exception.message}"
+  end
+
+end
