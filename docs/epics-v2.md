@@ -580,6 +580,267 @@ So that my app reflects my journey.
 
 ---
 
+## Epic 13: Pro Mode - Activity Management (FR46-FR50)
+
+Goal: Enable users to create, edit, and manage custom activities with full control over their personal activity library.
+
+### Story 13.1: Activity editor view (FR46)
+As a user,
+I want to edit imported or custom activities,
+So that I can personalize them to my preferences.
+
+**Acceptance Criteria:**
+- **Given** an activity in My Activities
+  **When** I tap Edit
+  **Then** I see a form with: title, description, time, energy, context, category, tags.
+- **And** changes save locally (and to Supabase if community-shared).
+- **And** original activity is preserved; my edits are personal overrides.
+- **And** "Reset to original" option available for imported activities.
+
+**Prerequisites:** Epic 7 (auth)
+**Technical Notes:** ActivityEditorView.swift; form validation; UserActivityEdits Core Data entity for local overrides; sync to Supabase user_activity_edits table if online.
+
+### Story 13.2: Activity creator view (FR47)
+As a user,
+I want to create my own activities from scratch,
+So that I can add personal rituals to my menu.
+
+**Acceptance Criteria:**
+- **Given** Pro Mode enabled
+  **When** I tap "Create Activity"
+  **Then** I see a blank form with all activity fields.
+- **And** validation ensures title (3+ chars), description (10+ chars), time (1-120 min).
+- **And** created activities have source="user-created" and appear in suggestions.
+- **And** created activities can optionally be shared to community.
+
+**Prerequisites:** 13.1
+**Technical Notes:** ActivityCreatorView.swift; reuse form from 13.1; save to Core Data with source="user-created"; optional "Share to Community" toggle submits to Supabase.
+
+### Story 13.3: My Activities list view (FR48)
+As a user,
+I want to see all my custom and imported activities,
+So that I can manage my personal library.
+
+**Acceptance Criteria:**
+- **Given** Profile > My Activities
+  **When** I view the list
+  **Then** I see activities grouped by: Created by Me, Imported from AI, Downloaded from Community.
+- **And** each activity shows: title, category badge, time, source indicator.
+- **And** swipe-to-delete available for custom activities.
+- **And** tap opens activity detail with edit option.
+
+**Prerequisites:** 13.1, 13.2
+**Technical Notes:** MyActivitiesView.swift; sectioned list with source filter; fetch from Core Data with source predicate; show edit/delete actions.
+
+### Story 13.4: Delete activity with undo (FR49)
+As a user,
+I want to delete custom activities with undo option,
+So that I can remove activities without fear of losing them permanently.
+
+**Acceptance Criteria:**
+- **Given** a custom activity
+  **When** I delete it
+  **Then** it disappears with "Activity deleted" toast and "Undo" button.
+- **And** undo restores the activity within 5 seconds.
+- **And** seeded activities cannot be deleted (only hidden).
+- **And** community activities can be "removed from library" (not deleted from server).
+
+**Prerequisites:** 13.3
+**Technical Notes:** Soft delete with timer; DeferredActionToast component; distinguish delete vs hide vs remove; Core Data delete for user-created only.
+
+### Story 13.5: Pro Mode settings toggle (FR50)
+As a user,
+I want to enable/disable Pro Mode,
+So that I can choose between simple and advanced activity management.
+
+**Acceptance Criteria:**
+- **Given** Settings
+  **When** I toggle Pro Mode
+  **Then** My Activities tab appears/disappears from navigation.
+- **And** Create Activity button appears/disappears.
+- **And** Edit option appears/disappears on activity cards.
+- **And** Pro Mode state persists across sessions.
+
+**Prerequisites:** None
+**Technical Notes:** FeatureFlags.enableProMode; UserDefaults storage; conditional UI rendering; smooth transition animation.
+
+---
+
+## Epic 14: Community Library (FR51-FR60)
+
+Goal: Enable browsing, voting, rating, and contributing to a shared community activity library powered by Supabase.
+
+### Story 14.1: Supabase client setup (FR51)
+As a developer,
+I want Supabase client integrated,
+So that the app can communicate with the community backend.
+
+**Acceptance Criteria:**
+- **Given** app launch
+  **When** network is available
+  **Then** Supabase client initializes with environment-specific URL and key.
+- **And** client handles auth state from Sign in with Apple.
+- **And** offline mode gracefully degrades with cached data.
+- **And** configuration supports dev/staging/prod environments.
+
+**Prerequisites:** Epic 7 (auth)
+**Technical Notes:** Add supabase-swift package; Config.swift for environment URLs; SupabaseManager singleton; bridge Apple auth to Supabase auth.
+
+### Story 14.2: Community browse view (FR52)
+As a user,
+I want to browse community activities,
+So that I can discover new ideas from other users.
+
+**Acceptance Criteria:**
+- **Given** Community tab
+  **When** I open it
+  **Then** I see a grid of activity cards with: title, category, rating, vote count.
+- **And** I can filter by: category, energy level, time range.
+- **And** I can sort by: trending, newest, highest rated.
+- **And** pull-to-refresh fetches latest activities.
+- **And** pagination loads more as I scroll.
+
+**Prerequisites:** 14.1
+**Technical Notes:** CommunityBrowseView.swift; LazyVGrid with CommunityActivityCard; Supabase query with filters; infinite scroll with cursor pagination; LocalActivityCache for offline.
+
+### Story 14.3: Activity detail with voting (FR53)
+As a user,
+I want to view activity details and vote,
+So that I can support activities I like.
+
+**Acceptance Criteria:**
+- **Given** a community activity
+  **When** I tap it
+  **Then** I see full details: title, description, author, category, tags, stats.
+- **And** I can upvote or downvote (one vote per activity).
+- **And** vote count updates in real-time.
+- **And** my vote state persists and shows on return.
+- **And** voting works offline (queued for sync).
+
+**Prerequisites:** 14.2
+**Technical Notes:** CommunityActivityDetailView.swift; VoteButton component with optimistic UI; Supabase real-time subscription for vote updates; OfflineActionQueue for offline voting.
+
+### Story 14.4: Star rating and reviews (FR54)
+As a user,
+I want to rate activities with stars and optional review,
+So that I can share my experience with others.
+
+**Acceptance Criteria:**
+- **Given** an activity I've tried
+  **When** I tap Rate
+  **Then** I see 1-5 star picker with optional review text field.
+- **And** my rating updates the activity's average rating.
+- **And** I can change my rating later.
+- **And** reviews appear in activity detail (newest first).
+- **And** average rating shows on browse cards.
+
+**Prerequisites:** 14.3
+**Technical Notes:** StarRatingView.swift; 5-star interactive picker; Supabase ratings table with upsert; aggregate update via trigger; review text max 500 chars.
+
+### Story 14.5: Download to library (FR55)
+As a user,
+I want to download community activities to my local library,
+So that I can use them offline and include them in suggestions.
+
+**Acceptance Criteria:**
+- **Given** a community activity
+  **When** I tap "Add to My Menu"
+  **Then** the activity saves to Core Data.
+- **And** download count increments on server.
+- **And** activity appears in My Activities with "Community" source.
+- **And** downloaded activities appear in suggestion pool.
+- **And** badge shows "Downloaded" state on community cards.
+
+**Prerequisites:** 14.2, 13.3
+**Technical Notes:** Download creates local ActivityEntity copy with source="community-download"; track in user_downloads table; deduplicate by activity UUID.
+
+### Story 14.6: Submit activity to community (FR56)
+As a user,
+I want to share my custom activities with the community,
+So that others can benefit from my ideas.
+
+**Acceptance Criteria:**
+- **Given** a custom activity
+  **When** I tap "Share to Community"
+  **Then** activity submits for moderation.
+- **And** I see submission confirmation with "Pending Review" status.
+- **And** I can view my submissions and their status.
+- **And** approved activities appear in community browse.
+- **And** rejected activities show reason and allow resubmission.
+
+**Prerequisites:** 13.2, 14.1
+**Technical Notes:** Submit to Supabase activities with moderation_status="pending"; MySubmissionsView.swift; Edge Function for auto-moderation; notification on approval/rejection.
+
+### Story 14.7: Search community activities (FR57)
+As a user,
+I want to search the community library,
+So that I can find specific types of activities.
+
+**Acceptance Criteria:**
+- **Given** Community tab
+  **When** I type in search field
+  **Then** results filter by title, description, and tags.
+- **And** search is debounced (300ms delay).
+- **And** full-text search returns relevance-ranked results.
+- **And** empty results show helpful message with category suggestions.
+- **And** recent searches are saved for quick access.
+
+**Prerequisites:** 14.2
+**Technical Notes:** Use Supabase search_activities RPC function; debounced TextField; RecentSearches in UserDefaults; empty state with popular categories.
+
+### Story 14.8: Activity packs browse (FR58)
+As a user,
+I want to browse curated activity packs,
+So that I can discover themed collections.
+
+**Acceptance Criteria:**
+- **Given** Community > Packs
+  **When** I view the section
+  **Then** I see official packs with: cover image, name, activity count, unlock status.
+- **And** free packs show "Download Pack" button.
+- **And** locked packs show "Unlock at Season X" with progress.
+- **And** tapping opens pack detail with activity list.
+- **And** unlocked packs can be downloaded entirely.
+
+**Prerequisites:** 14.2, Epic 11 (gamification)
+**Technical Notes:** ActivityPacksView.swift; fetch from activity_packs table; check user_pack_unlocks; bulk download creates multiple ActivityEntity records.
+
+### Story 14.9: Report inappropriate content (FR59)
+As a user,
+I want to report inappropriate activities,
+So that the community stays safe and welcoming.
+
+**Acceptance Criteria:**
+- **Given** a community activity
+  **When** I tap Report
+  **Then** I see reason options: inappropriate, spam, harmful, duplicate, other.
+- **And** I can add optional details.
+- **And** report submits and shows confirmation.
+- **And** activities with 5+ reports auto-flag for review.
+- **And** I can only report each activity once.
+
+**Prerequisites:** 14.3
+**Technical Notes:** ReportActivitySheet.swift; insert to reports table; trigger updates report_count and flags at threshold; warm "Thanks for keeping our community safe" confirmation.
+
+### Story 14.10: User collections (FR60)
+As a user,
+I want to create collections of activities,
+So that I can organize themed playlists for different occasions.
+
+**Acceptance Criteria:**
+- **Given** Profile > Collections
+  **When** I create a collection
+  **Then** I can name it and optionally make it public.
+- **And** I can add activities from browse or my library.
+- **And** collections show activity count and can be reordered.
+- **And** public collections appear in community browse.
+- **And** I can share collection link with friends.
+
+**Prerequisites:** 14.5, 13.3
+**Technical Notes:** CollectionsView.swift; collections and collection_items tables; drag-to-reorder with sort_order; share via deep link or activity share sheet.
+
+---
+
 ## FR Coverage Matrix (v2)
 
 | FR | Epic.Story coverage |
@@ -607,24 +868,47 @@ So that my app reflects my journey.
 | FR43 | 12.3 |
 | FR44 | 12.4 |
 | FR45 | 12.5 |
+| FR46 | 13.1 |
+| FR47 | 13.2 |
+| FR48 | 13.3 |
+| FR49 | 13.4 |
+| FR50 | 13.5 |
+| FR51 | 14.1 |
+| FR52 | 14.2 |
+| FR53 | 14.3 |
+| FR54 | 14.4 |
+| FR55 | 14.5 |
+| FR56 | 14.6 |
+| FR57 | 14.7 |
+| FR58 | 14.8 |
+| FR59 | 14.9 |
+| FR60 | 14.10 |
 
 ---
 
 ## Summary
 
-DailyMenu v2 adds 6 epics (7-12) with 30 stories that transform the app into a personal wellness journey platform. The implementation sequence ensures:
+DailyMenu v2 adds 8 epics (7-14) with 45 stories that transform the app into a personal wellness journey platform with community features. The implementation sequence ensures:
 
 1. **Authentication first** (Epic 7) — enables sync and profile
 2. **Sync second** (Epic 8) — enables cross-device gamification
 3. **Mood tracking third** (Epic 9) — enriches activity data before gamification rewards it
 4. **Calendar fourth** (Epic 10) — provides reflection surface
 5. **Gamification core fifth** (Epic 11) — establishes points/levels foundation
-6. **Stamps and unlockables last** (Epic 12) — builds on gamification core
+6. **Stamps and unlockables sixth** (Epic 12) — builds on gamification core
+7. **Pro Mode seventh** (Epic 13) — enables activity management and creation
+8. **Community Library last** (Epic 14) — connects users through shared activities
 
 All features maintain the "engagement without pressure" philosophy with prominent skip options, warm messaging, and no streak punishment.
+
+**Technical Architecture:**
+- **Personal Data**: CloudKit (offline-first, free, Apple-native)
+- **Community Data**: Supabase (PostgreSQL, cross-platform ready)
 
 ---
 
 _For implementation: Use the `create-story` workflow to generate individual story implementation plans from this epic breakdown._
 
 _This document extends epics.md (v1) which covers Epics 1-6._
+
+_See also: `docs/supabase-schema.md` for Community Library database schema._
