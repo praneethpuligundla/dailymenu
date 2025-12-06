@@ -14,20 +14,253 @@ This document provides the epic and story breakdown for DailyMenu v2 enhancement
 
 **Living Document Notice:** This is the initial version for v2 features. It will be updated after implementation begins.
 
-### Epic Structure (v2 sequencing)
+### Epic Summary (by number)
 
-7) **Authentication & Profile** — Sign in with Apple, Keychain storage, profile page, credential management. *(FR23-FR26)*
-8) **iCloud Sync** — CloudKit setup, dual store architecture, conflict resolution, migration. *(FR27-FR29)*
-9) **Mood Tracking & Feedback** — Before/after mood prompts, quick feedback, data model extensions. *(FR30-FR34)*
-10) **Calendar View** — Month grid, day detail, history integration, color coding. *(FR35-FR37)*
-11) **Gamification Core** — Moments, Seasons, GamificationService, celebration UI. *(FR38-FR43)*
-12) **Stamps, Warmth & Unlockables** — Badge system, warmth gauge, activity packs, themes. *(FR40-FR45)*
+| Epic | Name | Stories | Dependencies |
+|------|------|---------|--------------|
+| 7 | Authentication & Profile | 5 | None |
+| 8 | iCloud Sync | 5 | Epic 7 |
+| 9 | Mood Tracking & Feedback | 5 | None (v1 complete) |
+| 10 | Calendar View | 5 | None (v1 complete) |
+| 11 | Gamification Core | 5 | Epic 9 (mood bonus) |
+| 12 | Stamps, Warmth & Unlockables | 5 | Epic 11 |
+| 13 | Pro Mode - Activity Management | 5 | None (v1 complete) |
+| 14 | Community Library | 10 | Epics 7, 11, 13 |
 
-**Rationale**
-- Authentication enables sync; sync enables cross-device gamification.
-- Mood tracking integrates with activity completion flow before gamification rewards.
-- Calendar provides reflection surface before gamification adds meaning to history.
-- Gamification core (Moments/Seasons) establishes foundation for stamps and unlockables.
+---
+
+## Implementation Phases (Optimized for Parallelization)
+
+### Phase 1: Foundation Layer
+**Duration**: Sprint 1-2
+**Goal**: Enable local enhancements without backend dependencies
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                         PHASE 1                                  │
+│                    (Can run in parallel)                         │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                  │
+│   Developer A              Developer B              Developer C  │
+│   ───────────              ───────────              ───────────  │
+│                                                                  │
+│   Epic 13: Pro Mode        Epic 9: Mood            Epic 10:      │
+│   (Activity Mgmt)          Tracking                Calendar View │
+│                                                                  │
+│   • 13.5 Pro Mode toggle   • 9.1 Before-mood      • 10.1 Month  │
+│   • 13.1 Activity editor   • 9.2 After-mood         grid        │
+│   • 13.2 Activity creator  • 9.3 Quick feedback   • 10.2 Day    │
+│   • 13.3 My Activities     • 9.4 MoodEntry          detail      │
+│   • 13.4 Delete w/ undo      entity              • 10.3 Tab     │
+│                                                     integration  │
+│                                                   • 10.4 Queries │
+│                                                   • 10.5 Colors  │
+│                                                                  │
+│   No dependencies          No dependencies         No deps       │
+│                                                                  │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+**Stories in Phase 1**: 15 stories (13.1-13.5, 9.1-9.5, 10.1-10.5)
+**Parallelization**: 3 independent tracks
+
+---
+
+### Phase 2: Authentication & Gamification
+**Duration**: Sprint 3-4
+**Goal**: Add user identity and reward systems
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                         PHASE 2                                  │
+│              (Parallel tracks with sync point)                   │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                  │
+│   Developer A                              Developer B           │
+│   ───────────                              ───────────           │
+│                                                                  │
+│   Epic 7: Authentication                   Epic 11: Gamification │
+│                                            Core                  │
+│   • 7.1 Sign in with Apple                                       │
+│   • 7.2 Keychain + Face ID                 • 11.1 Moments system │
+│   • 7.3 Profile page UI                    • 11.2 Seasons levels │
+│   • 7.4 Anonymous migration                • 11.3 UserGamification│
+│   • 7.5 Credential revocation              • 11.4 GamificationSvc│
+│                                            • 11.5 Season-up UI   │
+│                                                                  │
+│   ────────────────────────────────────────────────────────────  │
+│                                                                  │
+│         Epic 11 depends on Epic 9 (mood bonus calculation)       │
+│         Start 11.1-11.3 immediately, 11.4 after 9.x complete    │
+│                                                                  │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+**Stories in Phase 2**: 10 stories (7.1-7.5, 11.1-11.5)
+**Parallelization**: 2 independent tracks
+
+---
+
+### Phase 3: Sync & Rewards
+**Duration**: Sprint 5-6
+**Goal**: Enable cross-device sync and achievement system
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                         PHASE 3                                  │
+│              (Parallel tracks, both depend on Phase 2)           │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                  │
+│   Developer A                              Developer B           │
+│   ───────────                              ───────────           │
+│                                                                  │
+│   Epic 8: iCloud Sync                      Epic 12: Stamps &     │
+│   (depends on Epic 7)                      Unlockables           │
+│                                            (depends on Epic 11)  │
+│                                                                  │
+│   • 8.1 CloudKit container                 • 12.1 Badge system   │
+│   • 8.2 Dual store arch                    • 12.2 Stamp gallery  │
+│   • 8.3 Conflict resolution                • 12.3 Warmth gauge   │
+│   • 8.4 Migration prompt                   • 12.4 Activity packs │
+│   • 8.5 Sync status UI                     • 12.5 Themes         │
+│                                                                  │
+│   ────────────────────────────────────────────────────────────  │
+│                                                                  │
+│   Epic 9.5 (Mood Insights) can also be done here if deferred    │
+│                                                                  │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+**Stories in Phase 3**: 10 stories (8.1-8.5, 12.1-12.5)
+**Parallelization**: 2 independent tracks
+
+---
+
+### Phase 4: Community Platform
+**Duration**: Sprint 7-9
+**Goal**: Launch community features with Supabase backend
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                         PHASE 4                                  │
+│           (Sequential within, parallel between sub-tracks)       │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                  │
+│   Epic 14: Community Library                                     │
+│   (depends on Epics 7, 11, 13)                                   │
+│                                                                  │
+│   Sprint 7:                                                      │
+│   ─────────                                                      │
+│   Developer A               Developer B                          │
+│   • 14.1 Supabase setup     (Backend setup in parallel)         │
+│   • 14.2 Browse view        • Supabase project config            │
+│                             • Database schema deployment         │
+│                             • Edge functions                     │
+│                                                                  │
+│   Sprint 8:                                                      │
+│   ─────────                                                      │
+│   Developer A               Developer B                          │
+│   • 14.3 Voting             • 14.5 Download to library          │
+│   • 14.4 Ratings            • 14.6 Submit to community          │
+│                                                                  │
+│   Sprint 9:                                                      │
+│   ─────────                                                      │
+│   Developer A               Developer B                          │
+│   • 14.7 Search             • 14.9 Reports                       │
+│   • 14.8 Activity packs     • 14.10 Collections                  │
+│                                                                  │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+**Stories in Phase 4**: 10 stories (14.1-14.10)
+**Parallelization**: 2 tracks within each sprint
+
+---
+
+## Dependency Graph
+
+```
+                    ┌─────────────────────────────────────────────┐
+                    │              PHASE 1 (Parallel)              │
+                    │                                              │
+                    │   Epic 13        Epic 9         Epic 10     │
+                    │   Pro Mode       Mood           Calendar    │
+                    │      │             │               │         │
+                    └──────┼─────────────┼───────────────┼─────────┘
+                           │             │               │
+                           │             ▼               │
+                    ┌──────┼─────────────────────────────┼─────────┐
+                    │      │      PHASE 2 (Parallel)     │         │
+                    │      │                             │         │
+                    │   Epic 7 ◄────┐    Epic 11 ◄───────┘         │
+                    │   Auth        │    Gamification              │
+                    │      │        │         │                    │
+                    └──────┼────────┼─────────┼────────────────────┘
+                           │        │         │
+                           ▼        │         ▼
+                    ┌──────────────────────────────────────────────┐
+                    │           PHASE 3 (Parallel)                 │
+                    │                                              │
+                    │        Epic 8              Epic 12           │
+                    │        Sync                Stamps            │
+                    │           │                   │              │
+                    └───────────┼───────────────────┼──────────────┘
+                                │                   │
+                                ▼                   ▼
+                    ┌──────────────────────────────────────────────┐
+                    │           PHASE 4 (Community)                │
+                    │                                              │
+                    │                Epic 14                       │
+                    │            Community Library                 │
+                    │                                              │
+                    └──────────────────────────────────────────────┘
+```
+
+---
+
+## Story-Level Parallelization Within Epics
+
+### Epic 7: Authentication
+| Story | Can Parallelize With | Notes |
+|-------|---------------------|-------|
+| 7.1 Sign in with Apple | 7.2 Keychain | Same developer, sequential |
+| 7.3 Profile page UI | 7.1, 7.2 | Different layer (UI vs infra) |
+| 7.4 Migration | After 7.1 | Needs auth first |
+| 7.5 Revocation | After 7.1 | Needs auth first |
+
+### Epic 9: Mood Tracking
+| Story | Can Parallelize With | Notes |
+|-------|---------------------|-------|
+| 9.1 Before-mood | 9.4 MoodEntry entity | UI and data layer parallel |
+| 9.2 After-mood | 9.4 MoodEntry entity | UI and data layer parallel |
+| 9.3 Quick feedback | 9.1, 9.2 | Independent UI component |
+| 9.5 Mood insights | After 9.1-9.4 | Needs data |
+
+### Epic 14: Community Library
+| Story | Can Parallelize With | Notes |
+|-------|---------------------|-------|
+| 14.1 Supabase setup | Backend deployment | Infra parallel |
+| 14.2 Browse | 14.5 Download | Read vs write |
+| 14.3 Voting | 14.4 Ratings | Both are feedback |
+| 14.7 Search | 14.9 Reports | Different features |
+| 14.8 Packs | 14.10 Collections | Both are grouping |
+
+---
+
+## Critical Path
+
+The minimum path through all epics:
+
+```
+Epic 13.5 (Pro Mode toggle) → Epic 9.1 (Mood) → Epic 11.1 (Moments)
+    ↓                              ↓                    ↓
+Epic 7.1 (Auth) ──────────────────────────────────────────→ Epic 14.1 (Supabase)
+    ↓                                                           ↓
+Epic 8.1 (CloudKit) ────────────────────────────────────→ Epic 14.10 (Collections)
+```
+
+**Critical path duration**: ~7-8 sprints
+**With parallelization**: ~4-5 sprints (40% reduction)
 
 ---
 
@@ -888,16 +1121,38 @@ So that I can organize themed playlists for different occasions.
 
 ## Summary
 
-DailyMenu v2 adds 8 epics (7-14) with 45 stories that transform the app into a personal wellness journey platform with community features. The implementation sequence ensures:
+DailyMenu v2 adds 8 epics (7-14) with 45 stories that transform the app into a personal wellness journey platform with community features.
 
-1. **Authentication first** (Epic 7) — enables sync and profile
-2. **Sync second** (Epic 8) — enables cross-device gamification
-3. **Mood tracking third** (Epic 9) — enriches activity data before gamification rewards it
-4. **Calendar fourth** (Epic 10) — provides reflection surface
-5. **Gamification core fifth** (Epic 11) — establishes points/levels foundation
-6. **Stamps and unlockables sixth** (Epic 12) — builds on gamification core
-7. **Pro Mode seventh** (Epic 13) — enables activity management and creation
-8. **Community Library last** (Epic 14) — connects users through shared activities
+### Optimized Implementation Order
+
+| Phase | Sprints | Epics | Parallelization |
+|-------|---------|-------|-----------------|
+| **Phase 1** | 1-2 | Epic 13, 9, 10 | 3 parallel tracks |
+| **Phase 2** | 3-4 | Epic 7, 11 | 2 parallel tracks |
+| **Phase 3** | 5-6 | Epic 8, 12 | 2 parallel tracks |
+| **Phase 4** | 7-9 | Epic 14 | 2 parallel tracks |
+
+**Key Insight**: By starting with Pro Mode (13), Mood (9), and Calendar (10) in Phase 1, we deliver user-facing features immediately while Authentication (7) and Gamification (11) proceed in Phase 2. This reduces time-to-value for local features.
+
+### Implementation Rationale
+
+1. **Phase 1 (Local Features)**: Epic 13 (Pro Mode), Epic 9 (Mood), Epic 10 (Calendar)
+   - No dependencies, maximum parallelization
+   - Users get tangible features without needing an account
+
+2. **Phase 2 (Identity & Rewards)**: Epic 7 (Auth), Epic 11 (Gamification)
+   - Auth enables sync; Gamification uses Mood data from Phase 1
+   - Profile page ties together Phase 1 features
+
+3. **Phase 3 (Sync & Achievements)**: Epic 8 (iCloud), Epic 12 (Stamps)
+   - Sync requires auth; Stamps require gamification
+   - Cross-device experience becomes complete
+
+4. **Phase 4 (Community)**: Epic 14 (Community Library)
+   - Requires auth, gamification, and pro mode
+   - Full platform capabilities
+
+**Time Savings**: ~40% reduction through parallelization (4-5 sprints vs 7-8 sequential)
 
 All features maintain the "engagement without pressure" philosophy with prominent skip options, warm messaging, and no streak punishment.
 
